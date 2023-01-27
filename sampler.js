@@ -36,10 +36,10 @@ let suits = ['Hearts', 'Clubs', 'Spades', 'Diamonds'];
             deckClubs.push(deck[i] + ' of ' + suits[1]);
         }
         for(let i = 0; i < deck.length; i++){
-            deckSpades.push(deck[i] + ' of ' + suits[1]);
+            deckSpades.push(deck[i] + ' of ' + suits[2]);
         }
         for(let i = 0; i < deck.length; i++){
-            deckDiamonds.push(deck[i] + ' of ' + suits[1]);
+            deckDiamonds.push(deck[i] + ' of ' + suits[3]);
         }
 //deckWithSuits.push(deckClubs + deckDiamonds + deckHearts + deckSpades);//concatenates the suits into a single deck
 deckWithSuits.push(...deckClubs, ...deckDiamonds, ...deckHearts, ...deckSpades)
