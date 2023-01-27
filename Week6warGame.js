@@ -36,11 +36,7 @@ class Deck {
     }
     //method to create
     createDeck(){
-        let indexer = 0;
-        for(let i = 1; i <= 10; i++){
-            indexer += 1;
-            this.deck.push(indexer);
-        }
+        
         // for(let i = 0; i < this.faceValue.length; i++){
         //    // console.log(this.faceValue[i]);
         //    for(let s = 0; s < this.suits.length; s++)   {
@@ -52,10 +48,9 @@ class Deck {
 
     //method to create
     createDeck(){
-        for(let i = 0; i < this.faceValue.length; i++){
-            for(let s = 0; s < this.suits.length; s++) {
-                this.deck.push(new Card(this.faceValue[i], this.suits[s], this.rank[i]));
-            }
+var deck = [];
+var dealDeck = [];
+
         }
     }
 }
@@ -79,6 +74,7 @@ class Game{
         )
     }
 }
+dealToPlayers(){
 
     for(let i = 0; i < shuffledDeck.length; i++){
         if(shuffledDeck[i + 1] % 2 == 0){
@@ -88,10 +84,13 @@ class Game{
             this.player2.push(shuffledDeck[i]);
         }
     }
+}
+
     if(player1(player1[i]) > (player2(player2[i]))){
         let winningHand = [];
         winningHand.push("P1");
     }
+
     else{
         winningHand.push("P2");
     }  
