@@ -6,9 +6,9 @@
 // If there is a rank attached to each card and I make a loop to attach the cards with each suit, will it carry the rank with it
 class Player{                    // the hand has to be created after the deck methods are finished. grabbing the hand from the
                                  //ANCHOR -  deck class for each player. seems like the best way to do this since I have to create 2 distinct 
-    constructor(name, hand){     // instances of players with seperate properties
-        this.name = name;
-        this.hand = [];
+    constructor(name, hand){     // instances of players with seperate properties If each player has their own hand, I feel like I can assign
+        this.name = name;        // a value to cards as I pull them out of the array for comparison. I would need to identify the cards and have
+        this.hand = [];          // the computer check for numbers and assign value and face cards as strings and assign a numeric value to 
     }
 }                                //ANCHOR - Do I need this class at all. I need the deck to be globally accessible for future methods
 class Deck{                      //since more than one method needs access to the deck, I decided to make a deck class
@@ -65,7 +65,8 @@ class Game{
                 handP2.push(this.deck[i]);                                 
             }
         }
-        this.P1Hand.push(new Deck(handP1));
+        this.P1Hand.push(new Deck(handP1)); //ANCHOR - I added the hand to the player class so this.P1Hand is no longer right
+                                             // unless I abandon that approack
         this.p2Hand.push(new Deck(handP2));
     }
 
@@ -81,10 +82,10 @@ class Game{
     // }
     createPlayer1(){
         let name1 = "Barry";
-        this.name.push(new Player(name1, this.P1Hand));
-        
-
-
+        this.name.push(new Player(name1, this.P1Hand)); //ANCHOR - not sure if I need to push the hand to the player class when it is generated or
+                                                        // do it all at the same time here. The hand is not globally accessible so I don't         
+                                                        // know how to access it here unless it is put into a class at the time it is created
+                                                        // in the method earlier
     }
     createPlayer2(){
         let name2 = "Rich";
