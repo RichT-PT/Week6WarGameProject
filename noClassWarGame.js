@@ -38,4 +38,5 @@ var p2Score = 0;
     else{
         console.log("Player 2 is the winner!!!");
     }
-    
+    //ANCHOR - the code below was copied from a friend and I would like to understand its' function better
+    // also, will the value stay with the cards if you attach the card to a suit in a nested for loop?
