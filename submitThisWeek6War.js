@@ -1,6 +1,6 @@
-class Players{
-    constructor(name, hand, score){
-    this.name = name;
+class Player{
+    constructor(nameValue){
+    this.name = nameValue;
     this.hand = [];
     this.score = 0;
 }
@@ -14,9 +14,11 @@ class Deck{
         const suit = [' of Clubs ', ' of Hearts ', ' of Spades ',' of Diamonds '];
         const cardValue = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'k', 'A'];
         let deckOfCards = [];
-        for(let i = 0; i < suit; i++){
-            for(let a = 0; i < cardValue; i++){
-                let faceCardValue = cardValue[i];
+        for(let i = 0; i < suit.length; i++){
+            console.log("index:", i, "suit:", suit[i]);
+            for(let a = 0; a < cardValue.length; a++){
+                console.log("index:", a, "card:", cardValue[a]);
+                let faceCardValue = cardValue[a];
                 switch(faceCardValue){
                     case 'J':
                         faceCardValue = 11;
@@ -33,15 +35,17 @@ class Deck{
                     default:   
                     }
                     const card = {
-                        text: cardValue[i],
-                        suit: suit[a],
+                        text: cardValue[a],
+                        suit: suit[i],
                         value: +faceCardValue,
                     }
                     deckOfCards.push(card);
+                    
             }
         }
+        console.log("make a deck array", deckOfCards);
         return(deckOfCards.sort(() => Math.random() - 0.5))
-        console.log(deckOfCards);
+        
     }
 }
 class GameOfWar{
@@ -50,12 +54,24 @@ class GameOfWar{
     }
     startGame(){
         
+    var myNewDeck = new Deck();
+    console.log('shuffled',myNewDeck.deck);//ANCHOR - must reference the specific instance of the class
+
+    let Player1 = new Player("Rich");
+    let Player2 = new Player("Barry");
+    console.log(Player1.name);
+    this.players.push(Player1, Player2);
+    console.log(this.players[0]);
     
-    // let Player1 = {
-    //     p1: " Rich: ",
-    //     hand: [],
-    //     score: null,
-    // } 
+    for(let i = 0; i < myNewDeck.deck.length; i++){
+        if(i % 2 === 0){
+            this.players[0].hand.push(myNewDeck.deck[i]);
+        }
+        else{
+            this.players[1].hand.push(myNewDeck.deck[i]);
+        }
+    }  
+    console.log(this.players);  
     // let Player2 = {
     //     p2: " Barry: ",
     //     hand: [],
@@ -63,31 +79,19 @@ class GameOfWar{
     // }
     // this.players.push(Player1, Player2);
     }
-    newPlayer(){
-        let name = "Rich";
-        this.players.push(new Player(name));
+    // newPlayer(){
+    //     let name = "Rich";
+    //     this.players.push(new Player(name));
 
-    }
-    secondPlayer(){
-        let name = "Barry";
-        this.players.push(new Player(name));
+    // }
+    // secondPlayer(){
+    //     let name = "Barry";
+    //     this.players.push(new Player(name));
 
-    }
-    deal(){
-        const newDeck = new Deck();
-        this.deck = newDeck.deck;
-        for(let i = 0; c < this.deck.length; c++){
-            if((i + 2) % 2 == 0){
-                this.player1.hand.push(this.deck[i]);
-            }
-            else{
-                this.player2.hand.push(this.deck[i]);
-            }
-        }
-
-
-    }
+    // }
+    
     playRound(){
+        console.log('does playRoung work?');
         for(let i = 0; i <= 26; i++){
             let p1score = 0;
             let p2score = 0;
@@ -101,7 +105,7 @@ class GameOfWar{
         }
         this.players[0].score = p1score;
         this.players[1].score = p2score;
-        console.log('player 1 score: ' + p1score)
+        console.log('player 1 score: ', p1score)
     }
     tallyWinner(){
         if(this.players[0].Score > this.players[1].Score){
@@ -116,3 +120,5 @@ class GameOfWar{
 }
 let game = new GameOfWar();
 game.startGame();
+game.playRound();
+//game.tallyWinner();

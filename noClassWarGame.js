@@ -21,13 +21,23 @@ var p2Score = 0;
 
 
     for(let i = 0; i < p1.length; i++){
-       
-        p1Score += p1[i];
+        if(p1[i] > p2[i]){
+            p1Score += 1;
+        }
+        else if(p1[i] == p2[i]){
+           
+        }
+        else{
+            p2Score += 1;
+        }
+     console.log('player1 score ' + p1Score +'round: ' + (i + 1));  
+     console.log('player2 score ' + p2Score);
+   //     p1Score += p1[i];
     }
-    for( let i = 0; i < p2.length; i++){
-        p2Score += p2[i];
+    // for( let i = 0; i < p2.length; i++){
+    //     p2Score += p2[i];
         
-    }
+    // }
     console.log(deck);
     console.log(deck.length);
     console.log('player 1 score: ' + p1Score);
