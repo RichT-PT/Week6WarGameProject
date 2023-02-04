@@ -12,32 +12,32 @@ class Deck{
     }
     makeADeck = () => {
         const suit = [' of Clubs ', ' of Hearts ', ' of Spades ',' of Diamonds '];
-        const cardValue = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'k', 'A'];
+        const cards = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'k', 'A'];
         let deckOfCards = [];
         for(let i = 0; i < suit.length; i++){
-            console.log("index:", i, "suit:", suit[i]);
-            for(let a = 0; a < cardValue.length; a++){
-                console.log("index:", a, "card:", cardValue[a]);
-                let faceCardValue = cardValue[a];
-                switch(faceCardValue){
+           console.log("index:", i, "suit:", suit[i]);
+            for(let a = 0; a < cards.length; a++){
+               console.log("index:", a, "card:", cards[a]);
+                let valueOfCards = [a + 2];
+                switch(valueOfCards){
                     case 'J':
-                        faceCardValue = 11;
+                        valueOfCards = 11;
                         break;
                     case 'Q':
-                            faceCardValue = 12;
+                            valueOfCards = 12;
                             break;
                     case 'k':
-                            faceCardValue = 13;
+                            valueOfCards = 13;
                             break;
                     case 'A':
-                            faceCardValue = 14;
+                            valueOfCards = 14;
                             break;
                     default:   
                     }
                     const card = {
-                        text: cardValue[a],
+                        text: cards[a],
                         suit: suit[i],
-                        value: +faceCardValue,
+                        value: +valueOfCards,
                     }
                     deckOfCards.push(card);
                     
@@ -71,9 +71,11 @@ class GameOfWar{
             this.players[1].hand.push(myNewDeck.deck[i]);
         }
     }  
-    console.log(this.players);  
-    // let Player2 = {
-    //     p2: " Barry: ",
+    console.log("line 74 this.players[0]", this.players[0].hand[8]);//ANCHOR - this in fact logs the specific index 8 of hand and shows
+    // let Player2 = {                                               //the values as a property. how do i isolate the property value to use 
+    //     p2: " Barry: ",                                           // in the compare method?
+    //console.log(this.player[0].hand[8]);
+    
     //     hand: [],
     //     score: null,
     // }
@@ -91,34 +93,38 @@ class GameOfWar{
     // }
     
     playRound(){
-        console.log('does playRoung work?');
+       // console.log('does playRound work?');
         for(let i = 0; i <= 26; i++){
             let p1score = 0;
             let p2score = 0;
-            if(this.players[0].hand[i] > this.players[1].hand[i]){
+            if(this.players[0].hand[i].value > this.players[1].hand[i].value){
                 p1score += 1;
             }
-            else if(this.players[0].hand[i] < this.player[1].hand[i]){
+            else if(this.players[0].hand[i].value < this.players[1].hand[i].value){
                 p2score += 1;
             }
             else{}
-        }
         this.players[0].score = p1score;
         this.players[1].score = p2score;
-        console.log('player 1 score: ', p1score)
+        console.log(this.players[0].hand[i], 'player 1 score: ', this.players[0].score);
+        console.log(this.players[1].hand[i], 'Player 2 score: ', this.players[1].score);
+        }
+    console.log(this.players[0].hand);    
+        
     }
     tallyWinner(){
         if(this.players[0].Score > this.players[1].Score){
             console.log("Player 1 is the winner!!!");
-        }else if(this.player[1].Score > this.players[0].Score){
+        }else if(this.players[1].Score > this.players[0].Score){
             console.log("Player 2 is the winner!!!");
         }
         else{
             console.log("We have a Tie !!!");
         }
+console.log("line 119 this.players.hand.value", this.player.hand.value);
     }
 }
 let game = new GameOfWar();
 game.startGame();
 game.playRound();
-//game.tallyWinner();
+game.tallyWinner();
