@@ -15,9 +15,9 @@ class Deck{
         const cards = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'k', 'A'];
         let deckOfCards = [];
         for(let i = 0; i < suit.length; i++){
-           console.log("index:", i, "suit:", suit[i]);
+    //       console.log("index:", i, "suit:", suit[i]);
             for(let a = 0; a < cards.length; a++){
-               console.log("index:", a, "card:", cards[a]);
+            //   console.log("index:", a, "card:", cards[a]);
                 let valueOfCards = [a + 2];
                 switch(valueOfCards){
                     case 'J':
@@ -71,9 +71,9 @@ class GameOfWar{
             this.players[1].hand.push(myNewDeck.deck[i]);
         }
     }  
-    console.log("line 74 this.players[1]", this.players[1].hand);//ANCHOR - this in fact logs the specific index 8 of hand and shows
-    console.log("player 2 hand value at index 8", this.players[1].hand[8].value);
-    // let Player2 = {                                               //the values as a property. how do i isolate the property value to use 
+    // console.log("line 74 this.players[1]", this.players[1].hand);//ANCHOR - this in fact logs the specific index 8 of hand and shows
+    // console.log("player 2 hand value at index 8", this.players[1].hand[8].value);
+    // // let Player2 = {                                               //the values as a property. how do i isolate the property value to use 
     //     p2: " Barry: ",                                           // in the compare method?
     //console.log(this.player[0].hand[8]);
     
@@ -122,7 +122,7 @@ class GameOfWar{
     if(totalp1 > totalp2){
         console.log("\n\nPlayer 1:", this.players[0].name , "is the winner!!!");
         console.log("With a score of:", totalp1);
-        console.log("Against", this.players[1],"'s", totalp2);
+        console.log("Against", this.players[1].name,"'s", totalp2);
     }
     else if(totalp2 > totalp1){
         console.log("\n\nPlayer 2:", this.players[1].name, "is the winner!!!");
