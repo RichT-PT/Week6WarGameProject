@@ -39,6 +39,10 @@ class Deck{
                         suit: suit[i],
                         value: +valueOfCards,
                     }
+                    for(const property in card){
+                   //    console.log(`${typeof(property)}: ${typeof(card[property])}` );//ANCHOR - shows the type of the properties
+                   
+                    }
                     deckOfCards.push(card);
                     
             }
