@@ -43,7 +43,7 @@ class Deck{
                     
             }
         }
-        console.log("make a deck array", deckOfCards);
+        //console.log("make a deck array", deckOfCards);
         return(deckOfCards.sort(() => Math.random() - 0.5))
         
     }
@@ -55,13 +55,13 @@ class GameOfWar{
     startGame(){
         
     var myNewDeck = new Deck();
-    console.log('shuffled',myNewDeck.deck);//ANCHOR - must reference the specific instance of the class
+   // console.log('shuffled',myNewDeck.deck);//ANCHOR - must reference the specific instance of the class
 
     let Player1 = new Player("Rich");
     let Player2 = new Player("Barry");
-    console.log(Player1.name);
+    //console.log(Player1.name);
     this.players.push(Player1, Player2);
-    console.log(this.players[0]);
+    //console.log(this.players[0]);
     
     for(let i = 0; i < myNewDeck.deck.length; i++){
         if(i % 2 === 0){
@@ -99,6 +99,7 @@ class GameOfWar{
             let p2score = 0;
             if(this.players[0].hand[i].value > this.players[1].hand[i].value){
                 p1score += 1;
+                
             }
             else if(this.players[0].hand[i].value < this.players[1].hand[i].value){
                 p2score += 1;
