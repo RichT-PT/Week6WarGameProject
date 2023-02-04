@@ -71,7 +71,8 @@ class GameOfWar{
             this.players[1].hand.push(myNewDeck.deck[i]);
         }
     }  
-    console.log("line 74 this.players[0]", this.players[0].hand[8]);//ANCHOR - this in fact logs the specific index 8 of hand and shows
+    console.log("line 74 this.players[1]", this.players[1].hand);//ANCHOR - this in fact logs the specific index 8 of hand and shows
+    console.log("player 2 hand value at index 8", this.players[1].hand[8].value);
     // let Player2 = {                                               //the values as a property. how do i isolate the property value to use 
     //     p2: " Barry: ",                                           // in the compare method?
     //console.log(this.player[0].hand[8]);
@@ -93,39 +94,72 @@ class GameOfWar{
     // }
     
     playRound(){
+        var totalp1 = 0;
+        var totalp2 = 0;
        // console.log('does playRound work?');
-        for(let i = 0; i <= 26; i++){
+        for(let i = 0; i < 26; i++){
             let p1score = 0;
             let p2score = 0;
+        
             if(this.players[0].hand[i].value > this.players[1].hand[i].value){
-                p1score += 1;
-                
+                p1score = 1;
+                totalp1 += p1score;
+                     
             }
             else if(this.players[0].hand[i].value < this.players[1].hand[i].value){
-                p2score += 1;
+                p2score = 1;
+                totalp2 += p2score;
             }
             else{}
         this.players[0].score = p1score;
         this.players[1].score = p2score;
-        console.log(this.players[0].hand[i], 'player 1 score: ', this.players[0].score);
-        console.log(this.players[1].hand[i], 'Player 2 score: ', this.players[1].score);
-        }
-    console.log(this.players[0].hand);    
+     //   console.log(p1Total);
+        console.log("Round: ", (i + 1));
+        console.log(this.players[0].name, "Plays a:", this.players[0].hand[i].text, this.players[0].hand[i].suit, "score:", this.players[0].score);
+        console.log(this.players[1].name, "Plays a:", this.players[1].hand[i].text, this.players[1].hand[i].suit, "score:", this.players[1].score);
+
+    }
+    if(totalp1 > totalp2){
+        console.log("\n\nPlayer 1:", this.players[0].name , "is the winner!!!");
+        console.log("With a score of:", totalp1);
+        console.log("Against", this.players[1],"'s", totalp2);
+    }
+    else if(totalp2 > totalp1){
+        console.log("\n\nPlayer 2:", this.players[1].name, "is the winner!!!");
+        console.log("With a score of:", totalp2);
+        console.log("Against", this.players[0].name, "'s", totalp1);
+    }
+    else{
+        console.log("We have a Tie!!!");
+    }
+   // console.log (totalp1, totalp2);
+       
         
     }
-    tallyWinner(){
-        if(this.players[0].Score > this.players[1].Score){
-            console.log("Player 1 is the winner!!!");
-        }else if(this.players[1].Score > this.players[0].Score){
-            console.log("Player 2 is the winner!!!");
-        }
-        else{
-            console.log("We have a Tie !!!");
-        }
-console.log("line 119 this.players.hand.value", this.player.hand.value);
-    }
+//     tallyWinner(){
+//         let p1TotalScore = 0;
+//         let p2TotalScore = 0;
+//         for(let i = 0; i , this.players[0].length; i++){
+//             p1TotalScore = i + this.players[0].score;
+//         }
+//         for(let i = 0; this.players[1].length; i++){
+//             p2TotalScore = i + this.players[1].score
+//         }
+//         if(p1TotalScore > p2TotalScore){
+//             console.log("\n\nPlayer 1 is the winner!!!");
+//         }else if(p2TotalScore > p2TotalScore){
+//             console.log("\n\nPlayer 2 is the winner!!!");
+//         }
+//         else{
+//             console.log("\n\nWe have a Tie !!!");
+//         }
+//         console.log(this.players[0].score);
+
+//         console.log("player1 score", p1TotalScore,this.players[0].score, "player2", p2TotalScore);
+// //console.log("line 119 this.players.hand.value", this.player.hand.value);
+//     }
 }
 let game = new GameOfWar();
 game.startGame();
 game.playRound();
-game.tallyWinner();
+//game.tallyWinner();
