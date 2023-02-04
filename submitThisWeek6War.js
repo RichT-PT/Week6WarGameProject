@@ -15,9 +15,9 @@ class Deck{
         const cardValue = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'k', 'A'];
         let deckOfCards = [];
         for(let i = 0; i < suit.length; i++){
-            console.log("index:", i, "suit:", suit[i]);
+            //console.log("index:", i, "suit:", suit[i]);
             for(let a = 0; a < cardValue.length; a++){
-                console.log("index:", a, "card:", cardValue[a]);
+            //    console.log("index:", a, "card:", cardValue[a]);
                 let faceCardValue = cardValue[a];
                 switch(faceCardValue){
                     case 'J':
@@ -43,7 +43,7 @@ class Deck{
                     
             }
         }
-        console.log("make a deck array", deckOfCards);
+        //console.log("make a deck array", deckOfCards);
         return(deckOfCards.sort(() => Math.random() - 0.5))
         
     }
@@ -55,13 +55,13 @@ class GameOfWar{
     startGame(){
         
     var myNewDeck = new Deck();
-    console.log('shuffled',myNewDeck.deck);//ANCHOR - must reference the specific instance of the class
+   // console.log('shuffled',myNewDeck.deck);//ANCHOR - must reference the specific instance of the class
 
     let Player1 = new Player("Rich");
     let Player2 = new Player("Barry");
-    console.log(Player1.name);
+    //console.log(Player1.name);
     this.players.push(Player1, Player2);
-    console.log(this.players[0]);
+    //console.log(this.players[0]);
     
     for(let i = 0; i < myNewDeck.deck.length; i++){
         if(i % 2 === 0){
@@ -70,8 +70,9 @@ class GameOfWar{
         else{
             this.players[1].hand.push(myNewDeck.deck[i]);
         }
-    }  
-    console.log(this.players);  
+    }
+    console.log('line 74 player hands', this.players[0].hand);//, this.players[1].hand);
+   // console.log(this.players);  
     // let Player2 = {
     //     p2: " Barry: ",
     //     hand: [],
@@ -95,17 +96,23 @@ class GameOfWar{
         for(let i = 0; i <= 26; i++){
             let p1score = 0;
             let p2score = 0;
-            if(this.players[0].hand[i] > this.players[1].hand[i]){
+            if(this.players[0].hand[i].value > this.players[1].hand[i].value){
                 p1score += 1;
+                
             }
-            else if(this.players[0].hand[i] < this.player[1].hand[i]){
+            else if(this.players[0].hand[i].value < this.players[1].hand[i].value){
                 p2score += 1;
             }
-            else{}
-        }
+            else{
+                console.log("we have a tie");
+            }
+        console.log('players score: ', p1score, p2score);    
+        
         this.players[0].score = p1score;
         this.players[1].score = p2score;
-        console.log('player 1 score: ', p1score)
+        console.log("playRound player1 hand", this.players[0]);
+
+        }
     }
     tallyWinner(){
         if(this.players[0].Score > this.players[1].Score){
@@ -121,4 +128,4 @@ class GameOfWar{
 let game = new GameOfWar();
 game.startGame();
 game.playRound();
-//game.tallyWinner();
+game.tallyWinner();
