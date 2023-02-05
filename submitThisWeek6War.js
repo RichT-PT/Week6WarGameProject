@@ -40,6 +40,10 @@ class Deck{
                         suit: suit[i],
                         value: +valueOfCards,
                     }
+                    for(const property in card){
+                   //    console.log(`${typeof(property)}: ${typeof(card[property])}` );//ANCHOR - shows the type of the properties
+                   
+                    }
                     deckOfCards.push(card);
                     
             }
@@ -123,7 +127,7 @@ class GameOfWar{
     if(totalp1 > totalp2){
         console.log("\n\nPlayer 1:", this.players[0].name , "is the winner!!!");
         console.log("With a score of:", totalp1);
-        console.log("Against", this.players[1],"'s", totalp2);
+        console.log("Against", this.players[1].name,"'s", totalp2);
     }
     else if(totalp2 > totalp1){
         console.log("\n\nPlayer 2:", this.players[1].name, "is the winner!!!");
