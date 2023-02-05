@@ -15,25 +15,26 @@ class Deck{
         const cards = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'k', 'A'];
         let deckOfCards = [];
         for(let i = 0; i < suit.length; i++){
-           console.log("index:", i, "suit:", suit[i]);
+         //  console.log("index:", i, "suit:", suit[i]);
             for(let a = 0; a < cards.length; a++){
-               console.log("index:", a, "card:", cards[a]);
-                let valueOfCards = [a + 2];
-                switch(valueOfCards){
-                    case 'J':
-                        valueOfCards = 11;
-                        break;
-                    case 'Q':
-                            valueOfCards = 12;
-                            break;
-                    case 'k':
-                            valueOfCards = 13;
-                            break;
-                    case 'A':
-                            valueOfCards = 14;
-                            break;
-                    default:   
-                    }
+              // console.log("index:", a, "card:", cards[a]);
+                let valueOfCards = [a + 2];//ANCHOR - this switch case was the original code I made in collaboration with help from a coder
+                                           //my idea was to just use the index + 2 to create value. seems cleaner to me
+                // switch(valueOfCards){
+                //     case 'J':
+                //         valueOfCards = 11;
+                //         break;
+                //     case 'Q':
+                //             valueOfCards = 12;
+                //             break;
+                //     case 'k':
+                //             valueOfCards = 13;
+                //             break;
+                //     case 'A':
+                //             valueOfCards = 14;
+                //             break;
+                //     default:   
+                //     }
                     const card = {
                         text: cards[a],
                         suit: suit[i],
@@ -43,7 +44,7 @@ class Deck{
                     
             }
         }
-        //console.log("make a deck array", deckOfCards);
+        console.log("make a deck array", deckOfCards);
         return(deckOfCards.sort(() => Math.random() - 0.5))
         
     }
@@ -71,8 +72,8 @@ class GameOfWar{
             this.players[1].hand.push(myNewDeck.deck[i]);
         }
     }  
-    console.log("line 74 this.players[1]", this.players[1].hand);//ANCHOR - this in fact logs the specific index 8 of hand and shows
-    console.log("player 2 hand value at index 8", this.players[1].hand[8].value);
+    // console.log("line 74 this.players[1]", this.players[1].hand);//ANCHOR - this in fact logs the specific index 8 of hand and shows
+    // console.log("player 2 hand value at index 8", this.players[1].hand[8].value);
     // let Player2 = {                                               //the values as a property. how do i isolate the property value to use 
     //     p2: " Barry: ",                                           // in the compare method?
     //console.log(this.player[0].hand[8]);
